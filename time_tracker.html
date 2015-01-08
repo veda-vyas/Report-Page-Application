@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-compiatable" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="ttalogo.png" type="image/png" sizes="16x16">
+<title>Time Tracker</title>
+<link rel="stylesheet" type="text/css" href="bootstrap.css">
+<link rel="stylesheet" type="text/css" href="time_tracker.css">
+</head>
+<body onload="fourl()">
+	<div class="container-fluid">
+
+		<div class="row row1">
+			<div class="col-md-12">
+				<div class="page-header">
+					<img class="image1" src="TTA.png" alt="logo" type="image/png" width="75px">
+					<h1><em>TARA Mobile Technologies</em></h1>
+				</div>
+			</div>
+		</div>
+
+		<div class="row row2">			
+			<div class="col-md-3" style="padding-right: 20px;">
+				<div class="container-fluid container2">
+					<div class="row">
+						<form class="form-search searchbar">
+  						<input type="text" class="input-medium search-query">
+  						<button type="submit" id="" class="btn">Search</button>
+						</form>
+<br>
+<div>
+	<p id="employeebar"></p>
+</div>
+<script type="text/javascript">
+document.write('<table class="table-hover table1"border="0px"; style="width:100%">');
+document.write('<thead class="tablehead" style="text-align:right">');
+document.write('<tr><th style="text-align: center; width="65%">Employee Name</th><th style="text-align: center;">Duration</th></tr>');
+document.write('</thead>');
+document.write('</table>');
+document.write('<table id="table23" class="table-hover table1"border="1px"; style="width:100%">');
+document.write('</table>');
+</script>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-9">
+				<div class="container-fluid container3">
+					<div class="row row4">
+						<div class="col-md-12 col4">
+							<div class="btn-toolbar">
+  								<div class="btn-group">
+  									<button id="b1" class="btn">1</button>
+									<button id="b2" class="btn">2</button>
+									<button id="b3" class="btn">3</button>
+									<button id="b4" class="btn">4</button>
+									<button id="b5" class="btn">5</button>
+									<button id="b6" class="btn">6</button>
+									<button id="b7" class="btn">7</button>
+									<button id="b8" class="btn">8</button>
+									<button id="b9" class="btn">9</button>
+									<button id="b10" class="btn">10</button>
+									<button id="b11" class="btn">11</button>
+									<button id="b12" class="btn">12</button>
+									<button id="b13" class="btn">13</button>
+									<button id="b14" class="btn">14</button>
+									<button id="b15" class="btn">15</button>
+									<button id="b16" class="btn">16</button>
+									<button id="b17" class="btn">17</button>
+									<button id="b18" class="btn">18</button>
+									<button id="b19" class="btn">19</button>
+									<button id="b20" class="btn">20</button>
+									<button id="b21" class="btn">21</button>
+									<button id="b22" class="btn">22</button>
+									<button id="b23" class="btn">23</button>
+									<button id="b24" class="btn">24</button>
+									<button id="b25" class="btn">25</button>
+									<button id="b26" class="btn">26</button>
+									<button id="b27" class="btn">27</button>
+									<button id="b28" class="btn">28</button>
+									<button id="b29" class="btn">29</button>
+									<button id="b30" class="btn">30</button>
+									<button id="b31" class="btn">31</button>
+	  							</div>
+							</div>
+						</div>	
+					</div>
+					<div class="row row5">
+						<div id="tablespace" class="col-md-8 col5">
+<script type="text/javascript">
+document.write('<table class="table-hover table1"border="0px"; style="width:100%">');
+document.write('<thead class="tablehead" style="text-align:right">');
+document.write('<tr><th style="text-align: center; width: 287px;">Time In</th><th style="text-align: center;">Time Out</th></tr>');
+document.write('</thead>');
+document.write('</table>');
+document.write('<table id="table123" class="table-hover table1"border="1px"; style="width:100%">');
+document.write('</table>');
+</script>
+						</div>
+						<div class="col-md-4 col6">
+							<div class="bars">
+								<select class="yearbar">
+								<option value="-select-">Select Year</option>
+								<option value="2011">2011</option>
+								<option value="2012">2012</option>
+								<option value="2013">2013</option>
+								<option value="2014">2014</option>
+								<option value="2015">2015</option>
+							</select>
+<br>
+<br>
+							<select class="monthbar">
+								<option value="-select-">Select Month</option>
+  								<option value="January">January</option>
+  								<option value="February">February</option>
+  								<option value="March">March</option>
+  								<option value="April">April</option>
+  								<option value="May">May</option>
+  								<option value="June">June</option>
+  								<option value="July">July</option>
+  								<option value="August">August</option>
+  								<option value="September">September</option>
+  								<option value="October">October</option>
+  								<option value="November">November</option>
+  								<option value="December">December</option>
+							</select>
+							</div>
+							<br>
+<div id="mydiv"></div>
+<script>
+		var text;
+		var object;
+		var empname;
+		var empname1;
+		function funky(i){
+			var hours=Math.floor((empname1[i].duration)/3600);
+			var minutes=(empname1[i].duration-(hours*3600))/60;
+			var id = Math.trunc(hours)+'h '+Math.trunc(minutes)+'m';
+			var dd = empname1[i].no_of_days;
+			var fd = '<h4 style="color: white";>'+'Duration:'+id+'<br>'+'Days:' +dd+'</h4>';
+			function getDetails(empno){
+				var j=empno;
+				var actual;
+				var content="";
+				var val;
+				for(var i=0;i<empname.length;i++){
+					if(empname[i].name==empno){
+						actual=empname[i].details;
+						for (var j=0; j<actual.length; j++){
+							var timein = (((empname[i].details)[j]))[0];
+							var timeout = (((empname[i].details)[j]))[1];
+							content=content+"<tr><td>"+ timein.slice(11,19) + "</td><td>" + timeout.slice(11,19) +" </td><tr>";
+						}}}
+				return document.getElementById("table123").innerHTML=content ;
+				return document.getElementById("mydiv").innerHTML=fd;
+			}
+		var hd = getDetails(empname1[i].name);
+		document.getElementById("mydiv").innerHTML=fd;
+		}
+		function fourl() {
+			var httpRequest;
+			document.getElementById("b9").onclick = function() { 
+				makeRequest('http://localhost:8000/myjson.json') 
+			};
+			function makeRequest(url) {
+				if(window.XMLHttpRequest) {
+					httpRequest = new XMLHttpRequest();
+				} else if (window.ActiveXObject) {
+					try {
+						httpRequest = new ActiveXObject("Msxml2.XMLHTTP");
+					} catch (e) {
+						try {
+							httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
+						} catch (e) {}
+					}
+				}
+				if (!httpRequest) {
+					alert("Giving up :( Cannot create an XMLHTTP instance");
+					return false;
+				}
+				httpRequest.onreadystatechange = daywise;
+				httpRequest.open('GET', url);
+				httpRequest.send();
+			}
+			function daywise() {
+				try {
+				if (httpRequest.readyState === 4) {
+					if (httpRequest.status === 200) {
+						 text =  httpRequest.responseText;
+						 object = JSON.parse(text);
+						 empname = (object.day);
+						 empname1 = (object.month);
+						for (var i=0; i<empname.length; i++){
+												var hours=Math.floor((empname[i].duration)/3600);
+												var minutes=(empname[i].duration-(hours*3600))/60;
+												var result = Math.trunc(hours)+'h '+Math.trunc(minutes)+'m';
+												if (i==0){
+													var atlast='<tr><td style="width:65%";><a = "" onclick=funky('+i+')>' + empname[i].name + '</a></td>'+'<td>' + result + '</td></tr>';
+												}else{
+												atlast = atlast+'<tr><td><a = "" onclick = funky('+i+')>' + empname[i].name + '</a></td>'+'<td>' + result + '</td></tr>';
+												}
+											}
+										 document.getElementById("table23").innerHTML=atlast;
+										}
+											else {
+						alert("There was a problem with the request.");
+					}
+				}
+			}
+			 catch( e ) {
+    alert('Caught Exception: ' + e.description);
+  }
+}
+}
+</script>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

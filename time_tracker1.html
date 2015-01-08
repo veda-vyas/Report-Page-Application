@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-compiatable" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="ttalogo.png" type="image/png" sizes="16x16">
+<title>Time Tracker</title>
+<link rel="stylesheet" type="text/css" href="bootstrap.css">
+<link rel="stylesheet" type="text/css" href="time_tracker.css">
+<script type= "text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+</head>
+<body>
+	<div class="container-fluid">
+
+		<div class="row row1">
+			<div class="col-md-12">
+				<div class="page-header">
+					<img class="image1" src="TTA.png" alt="logo" type="image/png" width="75px">
+					<h1><em>TARA Mobile Technologies</em></h1>
+
+				</div>
+			</div>
+		</div>
+
+		<div class="row row2">			
+			<div class="col-md-3">
+				<div class="container-fluid container2">
+					<div class="row">
+						<form class="form-search searchbar">
+  						<input type="text" class="input-medium search-query">
+  						<button type="submit" class="btn">Search</button>
+						</form>
+<br>
+<div>
+	<p id="employeebar"></p>
+</div>
+<script type="text/javascript">
+document.write('<table class="table-hover table1"border="0px"; style="width:100%">');
+document.write('<thead class="tablehead" style="text-align:right">');
+document.write('<tr><th style="text-align: center;">Employee Name</th><th style="text-align: center;">Duration</th></tr>');
+document.write('</thead>');
+document.write('</table>');
+document.write('<table id="table23" class="table-hover table1"border="1px"; style="width:100%">');
+document.write('</table>');
+
+$.ajax({
+    type: "GET",
+    url: "http://localhost:8000/myjson.json", 
+    contentType: "text/json",
+    crossDomain: true,
+    jsonp : false,
+    cache: true,
+    type: "POST",
+    dataType: 'jsonp',
+    jsonpCallback: 'jsonCallback',
+    success: processData,
+    error: function(){ alert("You Noob.....!!! Error again"); }
+});
+
+function processData(data) {
+
+// var text = '{"day": [{"duration": 12434, "name": "akhilesh@taramt.com", "details": [["09-12-2014 10:23:34", "09-12-2014 10:24:24", "17", "TARA"], ["09-12-2014 10:24:55", "09-12-2014 11:27:55", "17", "TARA"], ["09-12-2014 11:34:28", "09-12-2014 13:57:52", "17", "TARA"]]}, {"duration": 39899, "name": "ashok@taramt.com", "details": [["09-12-2014 09:09:40", "09-12-2014 10:28:34", "not located", "TARA"], ["09-12-2014 10:28:49", "09-12-2014 10:29:24", "not located", "TARA"], ["09-12-2014 10:29:42", "09-12-2014 10:36:49", "not located", "TARA"], ["09-12-2014 10:39:47", "09-12-2014 10:44:54", "17", "TARA"], ["09-12-2014 10:50:15", "09-12-2014 10:50:36", "17", "TARA"], ["09-12-2014 10:49:54", "09-12-2014 10:50:06", "17", "TARA"], ["09-12-2014 10:54:52", "09-12-2014 13:23:10", "17", "TARA"], ["09-12-2014 10:54:20", "09-12-2014 10:54:39", "17", "TARA"], ["09-12-2014 14:07:26", "09-12-2014 16:01:27", "17", "TARA"], ["09-12-2014 16:10:42", "09-12-2014 17:01:30", "17", "TARA"], ["09-12-2014 17:09:35", "09-12-2014 18:14:38", "17", "TARA"], ["09-12-2014 18:30:24", "09-12-2014 19:18:31", "17", "TARA"], ["09-12-2014 19:39:26", "09-12-2014 20:51:32", "17", "TARA"], ["09-12-2014 20:52:32", "09-12-2014 20:52:38", "17", "TARA"], ["09-12-2014 21:24:45", "09-12-2014 22:38:40", "17", "TARA"]]}, {"duration": 0, "name": "niranjan@taramt.com", "details": []}, {"duration": 0, "name": "ram@taramt.com", "details": []}, {"duration": 0, "name": "pg@taramt.com", "details": []}, {"duration": 30479, "name": "melvin.m@taramt.com", "details": [["09-12-2014 09:11:14", "09-12-2014 17:39:13", "17", "TARA"]]}, {"duration": 0, "name": "rrcmuedu@gmail.com", "details": []}], "month": [{"duration": 176399, "no_of_days": 9, "name": "akhilesh@taramt.com"}, {"duration": 267607, "no_of_days": 11, "name": "ashok@taramt.com"}, {"duration": 29874, "no_of_days": 3, "name": "niranjan@taramt.com"}, {"duration": 15726443, "no_of_days": 8, "name": "ram@taramt.com"}, {"duration": 0, "no_of_days": 0, "name": "pg@taramt.com"}, {"duration": 378520, "no_of_days": 11, "name": "melvin.m@taramt.com"}, {"duration": 0, "no_of_days": 0, "name": "rrcmuedu@gmail.com"}]}'
+// var object = JSON.parse(text);
+var object = data;
+var empname = (object.day);
+function daywise(){
+for (var i=0; i<empname.length; i++){
+	var hours=Math.floor((empname[i].duration)/3600);
+	var minutes=(empname[i].duration-(hours*3600))/60;
+	var result = Math.trunc(hours)+'h '+Math.trunc(minutes)+'m';
+	if (i==0){
+		var atlast='<tr><td style="width:65%";><a = "" onclick=funky('+i+')>' + empname[i].name + '</a></td>'+'<td>' + result + '</td></tr>';
+	}else{
+	atlast = atlast+'<tr><td><a = "" onclick=funky('+i+')>' + empname[i].name + '</a></td>'+'<td>' + result + '</td></tr>';
+	}
+}
+return document.getElementById("table23").innerHTML=atlast;
+}
+var empname1 = (object.month);
+function funky(i){
+	var hours=Math.floor((empname1[i].duration)/3600);
+	var minutes=(empname1[i].duration-(hours*3600))/60;
+	var id = Math.trunc(hours)+'h '+Math.trunc(minutes)+'m';
+	var dd = empname1[i].no_of_days;
+	var fd = '<h4 style="color: white";>'+'Duration:'+id+'<br>'+'Days:' +dd+'</h4>';
+	function getDetails(empno){
+		var j=empno;
+		var actual;
+		var content="";
+		var val;
+		for(var i=0;i<empname.length;i++){
+			if(empname[i].name==empno){
+				actual=empname[i].details;
+				for (var j=0; j<actual.length; j++){
+					var timein = (((empname[i].details)[j]))[0];
+					var timeout = (((empname[i].details)[j]))[1];
+					content=content+"<tr><td>"+ timein.slice(11,19) + "</td><td>" + timeout.slice(11,19) +" </td><tr>";
+				}}}
+		return document.getElementById("table123").innerHTML=content ;
+		return document.getElementById("mydiv").innerHTML=fd;
+	}
+var hd = getDetails(empname1[i].name);
+document.getElementById("mydiv").innerHTML=fd;
+}
+daywise();
+}
+</script>	
+					</div>
+				</div>
+			</div>
+			<div class="col-md-9">
+				<div class="container-fluid container3">
+					<div class="row row4">
+						<div class="col-md-12 col4">
+							<div class="btn-toolbar">
+  								<div class="btn-group">
+  									<button class="btn">1</button>
+									<button class="btn">2</button>
+									<button class="btn">3</button>
+									<button class="btn">4</button>
+									<button class="btn">5</button>
+									<button class="btn">6</button>
+									<button class="btn">7</button>
+									<button class="btn">8</button>
+									<button class="btn" onclick="">9</button>
+									<button class="btn">10</button>
+									<button class="btn">11</button>
+									<button class="btn">12</button>
+									<button class="btn">13</button>
+									<button class="btn">14</button>
+									<button class="btn">15</button>
+									<button class="btn">16</button>
+									<button class="btn">17</button>
+									<button class="btn">18</button>
+									<button class="btn">19</button>
+									<button class="btn">20</button>
+									<button class="btn">21</button>
+									<button class="btn">22</button>
+									<button class="btn">23</button>
+									<button class="btn">24</button>
+									<button class="btn">25</button>
+									<button class="btn">26</button>
+									<button class="btn">27</button>
+									<button class="btn">28</button>
+									<button class="btn">29</button>
+									<button class="btn">30</button>
+									<button class="btn">31</button>
+	  							</div>
+							</div>
+						</div>	
+					</div>
+					<div class="row row5">
+						<div id="tablespace" class="col-md-8 col5">
+
+
+<script type="text/javascript">
+document.write('<table class="table-hover table1"border="0px"; style="width:100%">');
+document.write('<thead class="tablehead" style="text-align:right">');
+document.write('<tr><th style="text-align: center; width: 287px;">Time In</th><th style="text-align: center;">Time Out</th></tr>');
+document.write('</thead>');
+document.write('</table>');
+document.write('<table id="table123" class="table-hover table1"border="1px"; style="width:100%">');
+document.write('</table>');
+</script>
+						</div>
+						<div class="col-md-4 col6">
+						<br>
+							<div class="bars">
+								<select class="yearbar">
+								<option value="-select-">Select Year</option>
+								<option value="2011">2011</option>
+								<option value="2012">2012</option>
+								<option value="2013">2013</option>
+								<option value="2014">2014</option>
+								<option value="2015">2015</option>
+							</select>
+<br>
+<br>
+							<select class="monthbar">
+								<option value="-select-">Select Month</option>
+  								<option value="January">January</option>
+  								<option value="February">February</option>
+  								<option value="March">March</option>
+  								<option value="April">April</option>
+  								<option value="May">May</option>
+  								<option value="June">June</option>
+  								<option value="July">July</option>
+  								<option value="August">August</option>
+  								<option value="September">September</option>
+  								<option value="October">October</option>
+  								<option value="November">November</option>
+  								<option value="December">December</option>
+							</select>
+							</div>
+							<br>
+<div id="mydiv"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>
