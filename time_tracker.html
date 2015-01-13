@@ -160,23 +160,20 @@ document.write('</table>');
 		}
 		function fourl() {
 			var httpRequest;
-            var sets = [];
+            var urls = []
             for (var k=1; k<=31; k++) {
-            	
             	// dynamic generation of URL
             	var url = 'https://autocode.pythonanywhere.com/AAT/reporting/day_summary?date=';
-            
             	// to prefix 0 if the date is less than 10
             	if (k < 10) 
             		url += '0' + k + '-12-14';
             	else
             		url += k + '-12-14';
-            
+            urls[k] = url;
                // register the onclick
-            
                document.getElementById(k).onclick = function() {
-                       makeRequest(url)
-               };               
+                   makeRequest(urls[this.id])
+               }
             }
         };
 			function makeRequest(url) {
