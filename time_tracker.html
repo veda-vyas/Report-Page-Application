@@ -161,27 +161,23 @@ document.write('</table>');
 		function fourl() {
 			var httpRequest;
             var sets = [];
-            for (var k=01; k<=31; k++){
-               sets[k] = 'https://autocode.pythonanywhere.com/AAT/reporting/day_summary?date='+k+'-12-14';
-               document.getElementById("1").onclick = function() {
-                       makeRequest(sets[1])
-               };
-               document.getElementById("2").onclick = function() {
-                       makeRequest(sets[2])
-               };
-               document.getElementById("3").onclick = function() {
-                       makeRequest(sets[3])
-               };
-                document.getElementById("4").onclick = function() {
-                       makeRequest(sets[4])
-               };
-                document.getElementById("5").onclick = function() {
-                       makeRequest(sets[5])
-               };
-                document.getElementById("6").onclick = function() {
-                       makeRequest(sets[6])
-               };
-            };
+            for (var k=1; k<=31; k++) {
+            	
+            	// dynamic generation of URL
+            	var url = 'https://autocode.pythonanywhere.com/AAT/reporting/day_summary?date=';
+            	
+            	// to prefix 0 if the date is less than 10
+            	if (k < 10) 
+            		url += '0' + k + '-12-14';
+            	else
+            		url += k + '-12-14';
+               
+               // register the onclick
+               document.getElementById(k).onclick = function() {
+                       makeRequest(url)
+               };               
+            }
+        };
 			function makeRequest(url) {
 				if(window.XMLHttpRequest) {
 					httpRequest = new XMLHttpRequest();
