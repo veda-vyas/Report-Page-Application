@@ -11,10 +11,14 @@ body{
 	height: 30px;
 	position: relative;
 	padding-left: 15px;
+    padding-right: 15px;
+    margin-left: 10px;
 }
 .yearbar{
 	padding-left: 15px;
 	height: 30px;
+    padding-right: 15px;
+    margin-right: 10px;
 }
 h3{
 	padding: 5%;
@@ -32,6 +36,7 @@ h3{
 .row2{
 	background-color: gray;
 	padding: 2%;
+    padding-top: 1%;
 }
 .row4{
 	background-color: red;
@@ -59,8 +64,9 @@ h3{
 	display: inline-block;
 }
 .bars{
-	display: flex;
-	padding-left: 15px;
+	display: inline-flex;
+    padding-left: 50%;
+    padding-top: 2%;
 }
 h1{
 	  font-family: 'Tangerine', serif;
