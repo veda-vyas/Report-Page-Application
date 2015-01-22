@@ -6,12 +6,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" href="ttalogo.png" type="image/png" sizes="16x16">
 <title>Time Tracker</title>
-<link rel="stylesheet" type="text/css" src="https://autocode.pythonanywhere.com/AAT/static/jquery-ui-1.9.2.custom.css">
 <link rel="stylesheet" type="text/css" href="time_tracker.css">
 <link rel="stylesheet" type="text/css" href="bootstrap.css">
-
 <script type= "text/javascript" src="https://autocode.pythonanywhere.com/AAT/static/jquery-1.11.2.min.js"></script>
-<script type= "text/javascript" src="https://autocode.pythonanywhere.com/AAT/static/jquery-ui-1.9.2.custom.min.js"></script>
 </head>
 <body onload="fourl()"  style="background-color:gray">
 	<div class="container-fluid">
@@ -27,7 +24,6 @@
         <div class="bars">
             <select class="form-control" id="yearMonthInput"></select>
         </div>
-        <div id="datepicker"></div>
 		<div class="row row2">			
 			<div class="col-md-3" style="padding-right: 20px;">
 				<div class="container-fluid container2">
@@ -59,7 +55,13 @@ document.write('</table>');
 							<div class="btn-toolbar">
   								<div id="buttonbar" class="btn-group">
 <script type="text/javascript">
-    for (var l=1; l<=31; l++){
+    function daysInMonth(month,year) {
+    return new Date(year, month, 0).getDate();
+}
+    var m = 2;
+    var n = 2014;
+    var alldays = daysInMonth(m,n);
+    for (var l=1; l<=alldays; l++){
         if (l==1){
         var allbuttons = document.write('<button class="btn" id="'+l+'">'+l+'</button>');
         }else{
@@ -104,10 +106,9 @@ document.write('</table>');
     });
     //to pick year and month
    var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-
-    for (i = new Date().getFullYear() ; i > 2010; i--) {
+    for (i = new Date().getFullYear() ; i > 2012; i--) {
         $.each(months, function (index, value) {
-            $('#yearMonthInput').append($('<option />').val(index + "_" + i).html(value + " " + i));
+                $('#yearMonthInput').append($('<option>').html(value + " " + i));
         });
     }
 </script>
