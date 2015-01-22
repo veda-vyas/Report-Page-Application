@@ -105,7 +105,7 @@ document.write('</table>');
         $('.active').removeClass('active')
     });
     //to pick year and month
-   var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+   var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     for (i = new Date().getFullYear() ; i > 2012; i--) {
         $.each(months, function (index, value) {
                 $('#yearMonthInput').append($('<option>').html(value + " " + i));
