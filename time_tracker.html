@@ -10,7 +10,7 @@
 <link rel="stylesheet" type="text/css" href="bootstrap.css">
 <script type= "text/javascript" src="https://autocode.pythonanywhere.com/AAT/static/jquery-1.11.2.min.js"></script>
 </head>
-<body onload="fourl()"  style="background-color:gray">
+<body style="background-color:gray">
 	<div class="container-fluid">
 
 		<div class="row row1">
@@ -24,21 +24,20 @@
         <div class="bars">
 <script>
     //year bar
-document.write('<select class="form-control" id="yearInput">');
+    document.write('<select class="form-control" id="yearInput" onchange="hello()">');
     var date = new Date();
-        for (var o=date.getFullYear(); o>=2012; o--){
-            document.write('<option value="'+o+'" id="'+o+'">'+o+'</option>');
+    for (var o=date.getFullYear(); o>=2014; o--){
+        document.write('<option value="'+o+'" id="'+o+'">'+o+'</option>');
     }
     document.write('</select>');
     //month bar
-var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
-document.write('<select class="form-control" id="monthInput">');
-    for (var j=0; j<months.length; j++){
-    document.write('<option value="'+months[j]+'" id="month'+j+'">'+months[j]+'</option>');
+    var months = ["", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+    document.write('<select class="form-control" id="monthInput" onchange="hello()">');
+    for (var j=1; j<months.length; j++){
+        document.write('<option value="'+j+'" id="month'+j+'">'+months[j]+'</option>');
     }
-document.write('</select>');
+    document.write('</select>');
 </script>
-            </select>
         </div>
 		<div class="row row2">			
 			<div class="col-md-3" style="padding-right: 20px;">
@@ -70,21 +69,23 @@ document.write('</table>');
 						<div class="col-md-12 col4">
 							<div class="btn-toolbar">
   								<div id="buttonbar" class="btn-group">
-<script type="text/javascript">
+<script>
+    //to display 
+    function hello(){
+        var monthpicking = monthInput.value;
+        var yearpicking = yearInput.value;
     function daysInMonth(month,year) {
-    return new Date(year, month, 0).getDate();
-}
-    var m = 2;
-    var n = 2014;
-    var alldays = daysInMonth(m,n);
-    for (var l=1; l<=alldays; l++){
+        return new Date(year, month, 0).getDate();
+    }
+    var alldays = daysInMonth(monthpicking, yearpicking);
+        for (var l=1; l<=alldays; l++){
         if (l==1){
-        var allbuttons = document.write('<button class="btn" id="'+l+'">'+l+'</button>');
+        document.getElementById('buttonbar').innerHTML = '<button onclick="fourl()" class="btn" id="'+l+'">'+l+'</button>';
         }else{
-        allbuttons = allbuttons + document.write('<button class="btn" id="'+l+'">'+l+'</button>');
-        }
+        document.getElementById('buttonbar').innerHTML += '<button onclick="fourl()" class="btn" id="'+l+'">'+l+'</button>';
                }
-    //this is to display button bar
+    }
+}
 </script>
 	  							</div>
 							</div>
@@ -120,6 +121,7 @@ document.write('</table>');
     $(document).click(function(){
         $('.active').removeClass('active')
     });
+
 </script>
 <script type="text/javascript">
 document.write('<table class="table-hover table1"border="0px"; style="width:100%">');
@@ -182,7 +184,7 @@ document.write('</table>');
                    makeRequest(urls[this.id])
                };
             }
-        };
+        
 			function makeRequest(url) {
 				if(window.XMLHttpRequest) {
 					httpRequest = new XMLHttpRequest();
@@ -234,6 +236,7 @@ document.write('</table>');
     alert('Caught Exception: ' + e.description);
   }
 }
+            }
 </script>
 				</div>
 			</div>
